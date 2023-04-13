@@ -2,7 +2,7 @@ import allure
 import pytest
 
 
-@allure.story('Тестирование метода добавления отпуска с позитивными данными')
+@allure.story('Тестирование метода сравнения чисел')
 @pytest.mark.parametrize('comment', [(1)])
 def test_number(comment):
     item = comment

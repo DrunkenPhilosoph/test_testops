@@ -1,8 +1,7 @@
-name: Test Workflow
-on: workflow_dispatch
+name: Testing Workflow
+on: push
 jobs: 
-  test_demo:
-    runs-on: ubuntu-latest
-    steps:
-      - name: Print to console
-        run: echo Test run Allure Testops!
+  runs-on: ubuntu-latest
+  steps:
+    - name: Get repository code
+      uses: actions/checkout@V3
