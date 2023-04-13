@@ -3,5 +3,13 @@ on: push
 jobs: 
   runs-on: ubuntu-latest
   steps:
-    - name: Get repository code
-      uses: actions/checkout@V3
+  - name: Get repository code
+  - uses: actions/checkout@V3
+  - uses: actions/setup-python@v4
+  with:
+    python-version: 3.10
+    cache: 'pip'
+  - run: pip install -r requirements.txt
+  - run: python main.py
+
+

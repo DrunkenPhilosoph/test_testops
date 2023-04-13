@@ -9,3 +9,4 @@ def test_number(comment):
     with allure.step(f'Вводные данные: {comment}'):
         pass
     assert comment == 1
+    print(comment)
