@@ -1,6 +1,6 @@
 name: Testing Workflow
 on: push
-jobs: 
+jobs:
   runs-on: ubuntu-latest
   steps:
   - name: Get repository code
