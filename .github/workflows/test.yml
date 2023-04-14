@@ -8,7 +8,9 @@ jobs:
     runs-on: ubuntu-latest
 
     steps:
-    - uses: actions/checkout@V3.5.2
+      -
+    - name: Checkout
+      uses: actions/checkout@V3.5.2
 
     - name: Install python 3.10
       uses: actions/setup-python@v4
@@ -17,5 +19,6 @@ jobs:
 
     - name: Install requirements
       run: pip install -r requirements.txt
+
     - name: Run python
       run: python main.py
