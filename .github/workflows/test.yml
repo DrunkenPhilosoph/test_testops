@@ -10,7 +10,7 @@ jobs:
     steps:
 
     - name: Checkout
-      uses: actions/checkout@V3.5.2
+      uses: actions/checkout@V3
 
     - name: Install python 3.10
       uses: actions/setup-python@v4
