@@ -1,17 +1,18 @@
 name: Testing Workflow
 on: push
+
 jobs:
   build:
     runs-on: ubuntu-latest
-      steps:
-        name: Get repository code
-      - uses: actions/checkout@V3
-        name: Install python
-      - uses: actions/setup-python@v4
-        with:
-          python-version: 3.10
-          cache: 'pip'
-      - name: Install requirements
-      - run: pip install -r requirements.txt
-        name: Run python
-      - run: python main.py
+    steps:
+      name: Get repository code
+    - uses: actions/checkout@V3
+      name: Install python
+    - uses: actions/setup-python@v4
+      with:
+        python-version: 3.10
+        cache: 'pip'
+    - name: Install requirements
+    - run: pip install -r requirements.txt
+      name: Run python
+    - run: python main.py
