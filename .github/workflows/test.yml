@@ -1,29 +1,29 @@
 name: Allure TestOps
-
-on: [push]
-
+on:
+  push:
+    branches:
+      - main
+  pull_request:
+    branches:
+      - main
 jobs:
-  test:
+  allure-publish:
+    name: Publish test results to Allure TestOps
     runs-on: ubuntu-latest
     steps:
-    - name: Checkout code
-      uses: actions/checkout@v2
-    - name: Set up Python
-      uses: actions/setup-python@v2
-      with:
-        python-version: '3.10'
-    - name: Install dependencies
-      run: |
-        python -m pip install --upgrade pip
-        pip install -r requirements.txt
-    - name: Run tests
-      run: |
-        pytest
-    - name: Publish to Allure TestOps
-      uses: allure-framework/allure-github-actions@v2.2.0
-      with:
-        allure-results: ./allure-results
-        allure-commandline-version: 2.14.0
-        allure-server-url: ${{ secrets.ALLURE_SERVER_URL }}
-        allure-project-name: ${{ secrets.ALLURE_PROJECT_NAME }}
-        allure-token: ${{ secrets.ALLURE_TOKEN }}
+      - name: Checkout repository
+        uses: actions/checkout@v2
+      - name: Setup Python
+        uses: actions/setup-python@v2
+        with:
+          python-version: "3.10"
+      - name: Install dependencies
+        run: pip install -r requirements.txt
+      - name: Run tests and generate Allure report
+        run: pytest --alluredir=./allure-results
+      - name: Publish to Allure TestOps
+        uses: allure-framework/allure-github-actions@v1.1.1
+        with:
+          server_url: http://127.0.0.1:2222
+          project_name: test1
+          access_token: ${{ secrets.ALLURE_TOKEN }}
