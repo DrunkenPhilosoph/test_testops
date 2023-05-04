@@ -1,18 +1,27 @@
 #!groovy
 
 pipeline {
-  agent any
+    agent any
 
-  stages {
-    stage('Run tests') {
-      steps {
-        sh 'echo hello world'
-        sh 'pip3.10 install -r requirements.txt'
-      }
+    stages {
+        stage('Test') {
+            steps {
+              sh 'echo hello world'
+              sh 'pip3.10 install -r requirements.txt'
+              sh '/usr/local/bin/pytest -s main.py --alluredir=allure-results'
+            }
+        }
+        stage('Allure TestOps') {
+            steps {
+                // Установка переменных окружения
+                withEnv(['ALLURE_SERVER_URL=http://127.0.0.6:80',
+                         'ALLURE_PROJECT_ID=1',
+                         'ALLURE_CLIENT_SECRET=2e9796bf-d5ee-4c36-aa70-3caa80ecdec5']) {
+                    
+                    // Выгрузка результатов тестирования в Allure TestOps
+                    sh '/allurectl upload /var/lib/jenkins/workspace/test-line/allure-results'
+                }
+            }
+        }
     }
-      steps {
-        withAllureUpload(serverId: 'http://127.0.0.6:80', projectId: '1', results: [[path: 'build/allure-results']]) {
-        sh '/usr/local/bin/pytest -s main.py --alluredir=allure-results'
-      }
-  }
 }
