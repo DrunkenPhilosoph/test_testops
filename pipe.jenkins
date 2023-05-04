@@ -10,11 +10,9 @@ pipeline {
         sh 'pip3.10 install -r requirements.txt'
       }
     }
-        stage('Build') {
-            steps {
-                withAllureUpload(serverId: 'http://127.0.0.6:80', projectId: '1', results: [[path: 'build/allure-results']]) {
-                    sh '/usr/local/bin/pytest -s main.py --alluredir=allure-results'
-                }
-            }
+      steps {
+        withAllureUpload(serverId: 'http://127.0.0.6:80', projectId: '1', results: [[path: 'build/allure-results']]) {
+        sh '/usr/local/bin/pytest -s main.py --alluredir=allure-results'
+      }
   }
 }
