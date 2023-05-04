@@ -14,13 +14,13 @@ pipeline {
         stage('Allure TestOps') {
             steps {
                 // Установка переменных окружения
-                withEnv(['ALLURE_SERVER_URL=http://127.0.0.6:80',
-                         'ALLURE_CLIENT_ID=2',
+                withEnv(['ALLURE_ENDPOINT=http://127.0.0.6:80',
+                         'ALLURE_LAUNCH_TAGS=release',
                          'ALLURE_PROJECT_ID=1',
-                         'ALLURE_CLIENT_SECRET=2e9796bf-d5ee-4c36-aa70-3caa80ecdec5']) {
+                         'ALLURE_TOKEN=2e9796bf-d5ee-4c36-aa70-3caa80ecdec5']) {
                     
                     // Выгрузка результатов тестирования в Allure TestOps
-                    sh '/allurectl upload /var/lib/jenkins/workspace/test-line/allure-results'
+                    sh '/allurectl upload --launch-name "First report" /var/lib/jenkins/workspace/test-line/allure-results'
                 }
             }
         }
