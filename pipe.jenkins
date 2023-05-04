@@ -15,6 +15,7 @@ pipeline {
             steps {
                 // Установка переменных окружения
                 withEnv(['ALLURE_SERVER_URL=http://127.0.0.6:80',
+                         'ALLURE_CLIENT_ID=2',
                          'ALLURE_PROJECT_ID=1',
                          'ALLURE_CLIENT_SECRET=2e9796bf-d5ee-4c36-aa70-3caa80ecdec5']) {
                     
