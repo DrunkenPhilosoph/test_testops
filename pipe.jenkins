@@ -8,13 +8,12 @@ pipeline {
       steps {
         sh 'echo hello world'
         sh 'pip3.10 install -r requirements.txt'
-        sh '/usr/local/bin/pytest -s main.py --alluredir=allure-results'
       }
     }
         stage('Build') {
             steps {
                 withAllureUpload(serverId: 'http://127.0.0.6:80', projectId: '1', results: [[path: 'build/allure-results']]) {
-                    sh './gradlew clean test'
+                    sh '/usr/local/bin/pytest -s main.py --alluredir=allure-results'
                 }
             }
   }
