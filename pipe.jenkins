@@ -8,7 +8,7 @@ pipeline {
       steps {
         sh 'echo hello world'
         sh 'pip3.10 install -r requirements.txt'
-        sh 'pytest -s main.py --alluredir=allure-results'
+        sh '/home/evg/.local/bin/pytest -s main.py --alluredir=allure-results'
       }
     }
     stage('Publish results to Allure TestOps') {
