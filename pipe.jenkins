@@ -11,15 +11,11 @@ pipeline {
         sh '/usr/local/bin/pytest -s main.py --alluredir=allure-results'
       }
     }
-    stage('Publish results to Allure TestOps') {
-      steps {
-        allureTestOps (
-          serverUrl: 'https://127.0.0.6:80',
-          projectKey: '1',
-          apiKey: credentials('d97a1d4a-b0d8-49ae-9473-178dbe7f7a5b'),
-          resultsDirectory: 'build/allure-results'
-        )
-      }
-    }
+        stage('Build') {
+            steps {
+                withAllureUpload(serverId: 'server.testops.cloud', projectId: '99', results: [[path: 'build/allure-results']]) {
+                    sh './gradlew clean test'
+                }
+            }
   }
 }
