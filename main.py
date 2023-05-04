@@ -8,5 +8,5 @@ def test_number(comment):
     item = comment
     with allure.step(f'Вводные данные: {comment}'):
         pass
-    assert comment == 1
+    assert comment == '1'
     print(comment)
