@@ -13,7 +13,7 @@ pipeline {
     }
         stage('Build') {
             steps {
-                withAllureUpload(serverId: 'server.testops.cloud', projectId: '99', results: [[path: 'build/allure-results']]) {
+                withAllureUpload(serverId: 'http://127.0.0.6:80', projectId: '1', results: [[path: 'build/allure-results']]) {
                     sh './gradlew clean test'
                 }
             }
