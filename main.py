@@ -5,7 +5,7 @@ import pytest
 @allure.story("Valid Login")
 @pytest.mark.parametrize("username, password", [("user1", "pass1"), ("user2", "pass2")])
 def test_valid_login(username, password):
-    with allure.step("Open login page"):
+    with allure.step("Open login pag"):
         # Открываем страницу входа
         pass
     
