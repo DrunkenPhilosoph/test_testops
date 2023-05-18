@@ -19,12 +19,6 @@ def test_example():
         assert result == data
 
 # Запуск тестов с использованием Allure и сохранением отчета
-if __name__ == "__main__":
-    # Параметры командной строки Allure
-    args = [
-        "--alluredir", "allure-results",  # Путь для сохранения результатов
-        "--clean-alluredir"  # Очистка предыдущих результатов
-    ]
 
 # import allure
 # import pytest
