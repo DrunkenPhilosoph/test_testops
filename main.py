@@ -17,6 +17,9 @@ def test_example():
     with allure.step("Шаг 3: Проверка результата"):
         # Проверка результата
         assert result == data
+    with allure.step("Шаг 3: Проверка результата"):
+        # Проверка результата
+        assert 'text' == data
 
 # Запуск тестов с использованием Allure и сохранением отчета
 
