@@ -1,7 +1,7 @@
 import allure
 import pytest
 
-@allureId("1")
+@allure.id("1")
 @allure.feature("Login")
 @allure.story("Valid Login")
 @pytest.mark.parametrize("username, password", [("user1", "pass1"), ("user2", "pass2")])
