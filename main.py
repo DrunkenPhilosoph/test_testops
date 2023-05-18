@@ -1,21 +1,46 @@
 import allure
 import pytest
 
-@pytest.fixture()
-def setup():
-    # Предварительные настройки для теста (если необходимо)
-    yield
-    # Завершающие действия после теста (если необходимо)
+@allureId("1")
+@allure.feature("Login")
+@allure.story("Valid Login")
+@pytest.mark.parametrize("username, password", [("user1", "pass1"), ("user2", "pass2")])
+def test_valid_login(username, password):
+    with allure.step("Open login page"):
+        # Открываем страницу входа
+        pass
+    
+    with allure.step("Enter username and password"):
+        # Вводим имя пользователя и пароль
+        pass
+    
+    with allure.step("Click on login button"):
+        # Нажимаем на кнопку входа
+        pass
+    
+    with allure.step("Verify login successful"):
+        # Проверяем, что вход успешен
+        pass
 
-@allure.feature("Моя функциональность")
-@allure.story("Мой сценарий")
-@allure.title("Проверка функции сложения")
-def test_addition(setup):
-    num1 = 2
-    num2 = 3
-    expected_result = 5
-    actual_result = num1 + num2
-    assert actual_result == expected_result, f"Ожидаемый результат: {expected_result}, Фактический результат: {actual_result}"
+@allure.feature("Login")
+@allure.story("Invalid Login")
+@pytest.mark.parametrize("username, password", [("user1", "wrongpass"), ("invaliduser", "pass2")])
+def test_invalid_login(username, password):
+    with allure.step("Open login page"):
+        # Открываем страницу входа
+        pass
+    
+    with allure.step("Enter username and password"):
+        # Вводим имя пользователя и пароль
+        pass
+    
+    with allure.step("Click on login button"):
+        # Нажимаем на кнопку входа
+        pass
+    
+    with allure.step("Verify login failed"):
+        # Проверяем, что вход не удался
+        pass
 
 # @allure.feature("Моя фича")
 # @allure.story("Мой сценарий")
